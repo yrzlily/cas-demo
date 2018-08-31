@@ -1,0 +1,30 @@
+server:
+  port: 8888
+#  ssl:
+#    enabled: true
+#    key-store: classpath:tomcat.keystore
+#    key-password: 123456
+#    key-store-type: jks
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+spring:
+  application:
+    name: cas-client
+cas:
+  serviceRegistry:
+    initFromJson: true
+    watcherEnabled: true
+    config:
+      location: classpath:/services
+  server:
+    url: http://127.0.0.1:8080/cas
+
+    login_url: ${cas.server.url}/login
+    logout_url: ${cas.server.url}/logout?service=${app.url}
+
+app:
+  url: http://127.0.0.1:8888
+  login_url: /login
+  logout_url: /logout

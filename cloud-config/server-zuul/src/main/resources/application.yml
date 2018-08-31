@@ -1,0 +1,18 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+server:
+  port: 8015
+spring:
+  application:
+    name: service-zuul
+zuul:
+  routes:
+    hi:
+      path: /api/**
+      serviceId: spring-cloud-constumer
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+    max-total-connections: 50

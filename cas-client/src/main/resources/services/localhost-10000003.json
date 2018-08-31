@@ -1,0 +1,7 @@
+{
+	"@class": "org.apereo.cas.services.RegisteredService",
+	"serviceId": "^http//127\\.0\\.0\\.1.*",
+	"name": "cas服务",
+	"id": 10000003,
+	"evaluationOrder": 1
+}

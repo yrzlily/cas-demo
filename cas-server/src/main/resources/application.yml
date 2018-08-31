@@ -1,0 +1,45 @@
+server:
+  port: 8889
+#  ssl:
+#    enabled: true
+#    key-store: classpath:tomcat.keystore
+#    key-password: 123456
+#    key-store-type: jks
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+spring:
+  application:
+    name: cas-client
+  datasource:
+    username: root
+    password: Wwe~6895238
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://118.25.91.78:3306/way?characterEncoding=utf8&useSSL=false
+    hikari:
+      validation-timeout: 3000
+      connection-timeout: 60000
+      idle-timeout: 60000
+      max-lifetime: 60000
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+cas:
+  serviceRegistry:
+    initFromJson: true
+    watcherEnabled: true
+    config:
+      location: classpath:/services
+  server:
+    url: http://127.0.0.1:8080/cas
+
+    login_url: ${cas.server.url}/login
+    logout_url: ${cas.server.url}/logout?service=${app.url}
+
+app:
+  url: http://127.0.0.1:8889
+  login_url: /login
+  logout_url: /logout
