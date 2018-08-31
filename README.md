@@ -1,2 +1,28 @@
-# cas-demo
-casdemo
+cas-Demo
+====
+
+项目目录
+-------
+
+* cas-client        测试项目A
+* cas-server    测试项目B
+* cloud-config    spring cloud的一些基本配置，虽然也只有个注册服务中心
+
+
+# 配置认证中心
+
+首先先配置个tomcat，这个你会的我就不讲了，
+先去cas的官方github下载项目 https://github.com/apereo/cas-overlay-template （我下的版本是5.3）
+然后运行build.cmd生成war放在tomcat的webapp文件夹下运行就可以了
+运行之后tomcat会生成一个cas文件夹，就你运行war后生成的东西
+
+##  Cas开始只支持https，所以要用的话有两个方案，一是配置项目使用https，二是关闭https，步骤如下
+* 1、进入webapps\cas\WEB-INF\classes 路径修改application.properties文件
+  * 在最下面添加，主要是关闭https
+  * cas.tgc.secure=false
+  * cas.serviceRegistry.initFromJson=true
+* 2、再进入webapps\cas\WEB-INF\classes\services 修改 HTTPSandIMAPS-10000001.json文件
+  * 修改第三行的"serviceId" : "^(https|imaps)://.*"，在里面加个http
+  * "serviceId" : "^(https|http|imaps)://.*"
+  
+### 修改完后再次运行tomcat，记得把war删了，访问http://127.0.0.1:8080/cas/login （实际路劲看你的，不过一般都是这个路劲）
