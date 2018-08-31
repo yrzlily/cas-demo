@@ -13,17 +13,13 @@ spring:
   application:
     name: cas-client
 cas:
-  serviceRegistry:
-    initFromJson: true
-    watcherEnabled: true
-    config:
-      location: classpath:/services
+  #这个是你认证中心的登陆地址和登出
   server:
     url: http://127.0.0.1:8080/cas
-
     login_url: ${cas.server.url}/login
     logout_url: ${cas.server.url}/logout?service=${app.url}
 
+#这个是你当前模块的登录地址和登出地址
 app:
   url: http://127.0.0.1:8888
   login_url: /login
