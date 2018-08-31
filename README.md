@@ -25,4 +25,9 @@ cas-Demo
   * 修改第三行的"serviceId" : "^(https|imaps)://.*"，在里面加个http
   * "serviceId" : "^(https|http|imaps)://.*"
   
-### 修改完后再次运行tomcat，记得把war删了，访问http://127.0.0.1:8080/cas/login （实际路劲看你的，不过一般都是这个路劲）
+### 修改完后再次运行tomcat，记得把war删了，访问http://127.0.0.1:8080/cas/login （实际路劲看你的，不过一般都是这个路劲），进入cas的登陆界面，用户密码在webapps\cas\WEB-INF\classes下文件application.properties最下面可以配置，就是你刚刚打开过的，配置的代码如下（这个我已经弄过的了）cas.authn.accept.users=admin::123456，能登陆成功的话这个配置就已经成功了。
+
+# 测试项目配置
+
+测试项目的话随便建立一个boot项目就行了，需要用到security和cas整合
+
